@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="${book.title}"></title>
+	<link rel="stylesheet" href="/bookDetails.css">
+</head>
+<body>
+    <h1 th:text="${book.title}"></h1>
+    <p>Author: <span th:text="${book.author}"></span></p>
+    <p>Year: <span th:text="${book.publicationYear}"></span></p>
+    <p>Price: <span th:text="${book.price}"></span></p>
+    <p>Genre: <span th:text="${book.genre}"></span></p>
+    <p>Availability: <span th:text="${book.isInStock} ? 'Yes' : 'No'"></span></p>
+	<p >Description: <span th:text="${book.description}"></p>
+	<br>
+	
+	
+	    <th:block th:if="${book.isThereAnBooksImage}">
+	        
+				<h2>Books Image</h2>
+	            <img th:src="${book.booksImageLink}" alt="Book Image" />
+	      
+	    </th:block>
+	    <th:block th:unless="${book.isThereAnBooksImage}">
+	        
+	           <h2>No Books Image</h2>
+	       
+	    </th:block>
+	
+	<h2>Authors Image</h2>
+    <img th:src="${book.imageLink}" alt="Grāmatas Autors" style="max-width: 300px;">
+	<br>
+	
+	<a th:href="@{bookShop/books/edit/{id}(id=${book.id})}">Edit</a>
+	<a th:href="@{bookShop/books/delete/{id}(id=${book.id})}"onclick="return confirmDelete()">Delete</a>
+	<br>
+    <a href="/bookShop/books">Atpakaļ uz grāmatu sarakstu</a>	
+	<div class="arrow-container">
+	    <a th:if="${previousBookId != null}" th:href="@{/bookShop/books/description/{id}(id=${previousBookId})}" class="arrow-link">&lt;</a>
+	    <a th:if="${nextBookId != null}" th:href="@{/bookShop/books/description/{id}(id=${nextBookId})}" class="arrow-link">&gt;</a>
+	</div>
+	
+</body>
+</html>

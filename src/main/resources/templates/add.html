@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+    <title>Add Book</title>
+	<link rel="stylesheet" href="/addBook.css">
+</head>
+<body>
+    <h1>Add Book</h1>
+	<br>
+	<a href="/bookShop">Return To The Main Menu</a>
+	<a href="/bookShop/books">Return To The List </a>
+    <form th:action="@{/bookShop/books}" th:object="${book}" method="post">
+        <label for="title">Title:</label>
+        <input type="text" id="title" th:field="*{title}" /><br />
+        <label for="author">Author:</label>
+        <input type="text" id="author" th:field="*{author}" /><br />
+		<label for="publicationYear">Year:</label>
+		<input type="number"  value="2025" max="2100" min="1600"id="publicationYear" th:field="*{publicationYear}" /><br />
+        <label for="price">Price:</label>
+        <input type="number" min="0.01"step="0.01" id="price" th:field="*{price}" /><br />
+        <label for="genre">Genre:</label>
+        <input type="text" id="genre" th:field="*{genre}" /><br />
+        <label for="inStock">In Stock:</label>
+		<input type="checkbox" id="inStock" th:field="*{inStock}" /><br />
+
+	   	<label for="imageLink">ImageLink:</label>
+		        <input type="text" id="imageLink" th:field="*{imageLink}" /><br />
+				<label for="booksImageLink">Books Image Link <u>(if there is no books image then enter (-))</u>:  </label>
+				<input type="text"id="booksImageLink" th:field="*{booksImageLink}"/><br />
+		<label for="description">Description:</label>
+		<textarea id="description" th:field="*{description}"></textarea><br />
+        <button type="submit">Add</button>
+    </form>
+
+</body>
+</html>

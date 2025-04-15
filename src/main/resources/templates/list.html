@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<link rel="stylesheet" href="/styleList.css">
+	<meta charset="UTF-8">
+    <title>Book List</title>
+</head>
+<body>
+    <h1>Book List</h1>
+	<a href="/bookShop">Return To The Main Menu</a>
+    <a href="/bookShop/books/add">Add Book</a>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Year</th>
+                <th>Price</th>
+                <th>Genre</th>
+                <th>In Stock</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="book : ${books}">
+                <td th:text="${book.id}"></td>
+                <td th:text="${book.title}"></td>
+                <td th:text="${book.author}"></td>
+                <td th:text="${book.publicationYear}"></td>
+                <td th:text="${book.price}"></td>
+                <td th:text="${book.genre}"></td>
+                <td th:text="${book.isInStock}"></td>
+                <td>
+                    <a th:href="@{/bookShop/books/edit/{id}(id=${book.id})}">Edit</a>
+                    <a th:href="@{/bookShop/books/delete/{id}(id=${book.id})}"onclick="return confirmDelete()">Delete</a>
+					<a th:href="@{/bookShop/books/description/{id}(id=${book.id})}">Description</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+	<script>
+	       function confirmDelete() {
+	           return confirm("Are you sure you want to delete this book?");
+	       }
+	   </script>
+</body>
+</html>

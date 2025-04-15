@@ -1,0 +1,80 @@
+body {
+    font-family: sans-serif;
+    margin: 20px;
+    background-color: #f4f4f4;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+body a {
+	display: inline-block;
+	background-color: #007bff;
+	color: white;
+	padding: 10px 15px;
+	border-radius: 5px;
+	margin-bottom: 15px;
+}
+
+body a:hover {
+	background-color: rgb(0, 86, 179);
+	text-decoration: none;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+
+
+
+td a {
+    background-color: #28a745;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 3px;
+    margin-right: 5px;
+    font-size: 0.9em;
+    display: inline-block;
+}
+
+
+td a[href*="/delete/"]{
+	background-color: red;
+}
+td a[href*="/description/"]{
+    background-color: #17a2b8; 
+}
+
+td a:hover {
+    opacity: 0.5;
+    text-decoration: none;
+}
+.arrow-link {
+    display: inline-block; /* Or display: inline; */
+    margin: 0 5px; /* Add some horizontal spacing between the arrows */
+    text-decoration: none; /* Remove underline from links */
+    font-size: 1.5em; /* Adjust font size as needed */
+}

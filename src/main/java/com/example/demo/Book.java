@@ -1,5 +1,8 @@
 package com.example.demo;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -20,6 +23,7 @@ public class Book {
     private String description;
     private boolean isThereAnBooksImage;
     private String booksImageLink;
+    private String dateTime;
 
 
     public boolean isThereAnBooksImage() {
@@ -115,6 +119,14 @@ public class Book {
         isInStock = inStock;
     }
 
+    public String getDateTime() {
+        return dateTime;
+    }
+    public void setDateTime(){
+        LocalDateTime now = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"); 
+        this.dateTime = now.format(formatter);
+    }
     public Book(String title, int year, String author, float price, String genre, boolean isInStock, String imageLink, String description, String booksImageLink) {
         this.title = title;
         this.publicationYear = year;
@@ -126,6 +138,7 @@ public class Book {
         this.description = description;
         this.booksImageLink = booksImageLink;
         setThereAnBooksImage();
+        setDateTime();
     }
 
     public Book() {

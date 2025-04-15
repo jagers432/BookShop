@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+    <title>Add Book</title>
+	<link rel="stylesheet" href="/admin.css">
+    <title>Admin Panel</title>
+</head>
+<body>
+    <h1>Book List (Admin View)</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Title</th>
+                <th>Publication Year</th>
+                <th>Author</th>
+                <th>Price</th>
+                <th>Genre</th>
+                <th>In Stock</th>
+                <th>Image Link</th>
+                <th>Description</th>
+                <th>Has Book Image</th>
+                <th>Book Image Link</th>
+                <th>Date/Time Added</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="book : ${books}">
+                <td th:text="${book.id}"></td>
+                <td th:text="${book.title}"></td>
+                <td th:text="${book.publicationYear}"></td>
+                <td th:text="${book.author}"></td>
+                <td th:text="${book.price}"></td>
+                <td th:text="${book.genre}"></td>
+                <td th:text="${book.isInStock}"></td>
+                <td th:text="${book.imageLink}"></td>
+                <td th:text="${book.description}"></td>
+                <td th:text="${book.isThereAnBooksImage}"></td>
+                <td th:text="${book.booksImageLink}"></td>
+                <td th:text="${book.getDateTime}"></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

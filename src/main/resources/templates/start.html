@@ -26,6 +26,30 @@
         <footer>
             <p>&copy; 2024 The Literary Haven. All rights reserved.</p>
         </footer>
+        <button onclick="confirmAdmin()">Admin</button>
     </div>
+    <script>
+        let MAX_ATTEMPTS=2;
+       let attempts=0;
+        function confirmAdmin(){
+            const enteredPass = prompt("Enter Admin Password:");
+            const  pass="1234";
+        
+            if(enteredPass ===pass){
+                window.open("/bookShop/admin" ,"_blank");
+
+            }else if(enteredPass!==null) {
+           
+                attempts=attempts+1;
+                alert("Incorrect Passwords."+attempts+"out of"+MAX_ATTEMPTS+" attempts");
+            
+            }
+            if (attempts==MAX_ATTEMPTS){
+                alert("BYE")
+                open("https://www.sciencedirect.com/topics/computer-science/password-guessing")
+            }
+        }
+      
+    </script>
 </body>
 </html>

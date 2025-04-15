@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.example.demo.Book;
 import com.example.demo.BookRepository;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 @Controller
 public class BookShopController {
@@ -66,6 +68,14 @@ public class BookShopController {
     public String startPage(Model model) {
         return "start";
     }
+    
+    @GetMapping("/bookShop/admin")
+    public String getMethodName(Model model) {
+        List<Book> books = bookRepository.findAll();
+        model.addAttribute("books", books);
+        return "admin";
+    }
+    
 
     @GetMapping("/bookShop/books")
     public String listBooks(Model model) {

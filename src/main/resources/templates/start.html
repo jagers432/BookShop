@@ -4,6 +4,27 @@
     <meta charset="UTF-8">
     <title>Add Book</title>
     <link rel="stylesheet" href="/start.css">
+	<script th:inline="javascript">
+	     let theNumber = /*[[${number}]]*/ 0;
+	     let MAX_ATTEMPTS = 2;
+	     let attempts = 0;
+
+	     function confirmAdmin() {
+	         const enteredPass = prompt("Enter Admin Password:");
+	         const pass = "1234";
+
+	         if (enteredPass === pass) {
+	             window.open("/bookShop/admin/" + theNumber, "_blank");
+	         } else if (enteredPass !== null) {
+	             attempts = attempts + 1;
+	             alert("Incorrect Passwords. " + attempts + " out of " + MAX_ATTEMPTS + " attempts");
+	         }
+
+	         if (attempts === MAX_ATTEMPTS) {
+	             window.open("https://www.sciencedirect.com/topics/computer-science/password-guessing", "_blank");
+	         }
+	     }
+	 </script>
 </head>
 <body>
     <div class="container">
@@ -28,28 +49,6 @@
         </footer>
         <button onclick="confirmAdmin()">Admin</button>
     </div>
-    <script>
-        let MAX_ATTEMPTS=2;
-       let attempts=0;
-        function confirmAdmin(){
-            const enteredPass = prompt("Enter Admin Password:");
-            const  pass="1234";
-        
-            if(enteredPass ===pass){
-                window.open("/bookShop/admin" ,"_blank");
-
-            }else if(enteredPass!==null) {
-           
-                attempts=attempts+1;
-                alert("Incorrect Passwords."+attempts+"out of"+MAX_ATTEMPTS+" attempts");
-            
-            }
-            if (attempts==MAX_ATTEMPTS){
-                alert("BYE")
-                open("https://www.sciencedirect.com/topics/computer-science/password-guessing")
-            }
-        }
-      
-    </script>
+    
 </body>
 </html>

@@ -2,6 +2,7 @@
 package com.example.demo.com;
 
 import java.util.List;
+import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,7 +20,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class BookShopController {
     private final BookRepository bookRepository;
-
+    int num;
     @Autowired
     public BookShopController(BookRepository bookRepository) {
         this.bookRepository = bookRepository;
@@ -66,16 +67,26 @@ public class BookShopController {
 
     @GetMapping("/bookShop")
     public String startPage(Model model) {
+    	Random rand = new Random();
+    	int numb =rand.nextInt(5000,40001);
+    	num=numb;
+    	model.addAttribute("number", numb);
+    	System.out.print(numb);
+    	
         return "start";
     }
     
-    @GetMapping("/bookShop/admin")
-    public String getMethodName(Model model) {
+    @GetMapping("/bookShop/admin/{numbers}")
+    public String getMethodName(@PathVariable int numbers, Model model) {
         List<Book> books = bookRepository.findAll();
         model.addAttribute("books", books);
+       
+		if(numbers==num) {
         return "admin";
+        }
+		return"fail";
     }
-    
+   
 
     @GetMapping("/bookShop/books")
     public String listBooks(Model model) {
@@ -121,6 +132,7 @@ public class BookShopController {
 
     @PostMapping("/bookShop/books")
     public String addBook(@ModelAttribute Book book) {
+    	book.setDateTime();
         bookRepository.save(book);
         return "redirect:/bookShop/books";
     }
